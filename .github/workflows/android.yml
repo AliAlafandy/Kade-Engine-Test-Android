@@ -62,7 +62,7 @@ jobs:
           haxelib git polymod https://github.com/larsiusprime/polymod --quiet
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc --quiet
           haxelib git extension-webm https://github.com/KlavierGayming/extension-webm --quiet
-          haxelib git linc_luajit https://github.com/superpowers09/linc_luajit
+          haxelib git linc_luajit https://github.com/superpowers04/linc_luajit
           haxelib run lime config HXCPP_ARM64 true
           haxelib run lime config HXCPP_x86 true
           haxelib install actuate 
