@@ -8,35 +8,35 @@ on: [push, pull_request, workflow_dispatch]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  Android:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4.1.7
-      - uses: krdlab/setup-haxe@v1
+      - uses: actions/checkout@main
+      - uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.2.3
+          haxe-version: 4.3.6
           
       - name: Cache haxelib path
-        uses: actions/cache@v4.1.7
+        uses: actions/cache@main
         with:
           path: |
             %HAXELIB_ROOT%
           key: ${{ runner.os }}-android
           
       - name: Setup Android SDK Tools
-        uses: android-actions/setup-android@v2.0.2
+        uses: android-actions/setup-android@main
         
       - name: Setup Java JDK
-        uses: actions/setup-java@v2.3.1
+        uses: actions/setup-java@main
         with:
           distribution: 'zulu'
           java-version: '11'
         
-      - uses: nttld/setup-ndk@v1
+      - uses: nttld/setup-ndk@main
         with:
           ndk-version: r27c
 
@@ -74,7 +74,7 @@ jobs:
           haxelib run lime setup android
           haxelib run lime build android -final
           
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@main
         with:
           name: Android Build
           path: export/release/android/bin/app/build/outputs/apk/debug
